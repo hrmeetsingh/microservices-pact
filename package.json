@@ -1,0 +1,18 @@
+{
+  "name": "microservices-pact",
+  "version": "1.0.0",
+  "description": "Consumer Driven Contract Testing Using a local Pact Broker",
+  "license": "ISC",
+  "author": "Harmeet Singh",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "start:service-a": "cd service-a && npm start",
+    "start:service-b": "cd service-b && npm start",
+    "test:service-a": "cd service-a && npm test",
+    "test:service-b": "cd service-b && npm test",
+    "start:pact-broker": "cd pact-broker && docker-compose up",
+    "setup": "npm install && cd service-a && npm install && cd ../service-b && npm install"
+  },
+  "keywords": ["microservices", "pact", "contract-testing", "typescript"]
+}

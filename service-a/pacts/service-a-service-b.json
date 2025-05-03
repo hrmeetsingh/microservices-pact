@@ -1,0 +1,48 @@
+{
+  "consumer": {
+    "name": "service-a"
+  },
+  "interactions": [
+    {
+      "description": "a request for all users",
+      "providerState": "users exist",
+      "request": {
+        "method": "GET",
+        "path": "/users"
+      },
+      "response": {
+        "body": [
+          {
+            "email": "john.doe@example.com",
+            "id": 1,
+            "name": "John Doe"
+          },
+          {
+            "email": "jane.smith@example.com",
+            "id": 2,
+            "name": "Jane Smith"
+          }
+        ],
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "status": 200
+      }
+    }
+  ],
+  "metadata": {
+    "pact-js": {
+      "version": "12.5.2"
+    },
+    "pactRust": {
+      "ffi": "0.4.20",
+      "models": "1.2.0"
+    },
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  },
+  "provider": {
+    "name": "service-b"
+  }
+}
