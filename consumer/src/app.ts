@@ -1,15 +1,15 @@
 import express from 'express';
-import { ServiceBClient, User } from './client';
+import { ProviderClient, User } from './client';
 
-export function createApp(serviceBUrl: string) {
+export function createApp(providerUrl: string) {
   const app = express();
-  const serviceBClient = new ServiceBClient(serviceBUrl);
+  const providerClient = new ProviderClient(providerUrl);
 
   app.use(express.json());
 
   app.get('/api/users', async (req: any, res: { json: (arg0: { count: number; users: User[]; }) => void; status: (arg0: number) => { (): any; new(): any; json: { (arg0: { error: string; }): void; new(): any; }; }; }) => {
     try {
-      const users = await serviceBClient.getUsers();
+      const users = await providerClient.getUsers();
       res.json({
         count: users.length,
         users
@@ -23,7 +23,7 @@ export function createApp(serviceBUrl: string) {
   app.get('/api/users/:id', async (req: { params: { id: string; }; }, res: { json: (arg0: { user: User; enriched: boolean; timestamp: string; }) => void; status: (arg0: number) => { (): any; new(): any; json: { (arg0: { error: string; }): void; new(): any; }; }; }) => {
     try {
       const id = parseInt(req.params.id, 10);
-      const user = await serviceBClient.getUserById(id);
+      const user = await providerClient.getUserById(id);
       res.json({
         user,
         enriched: true,

@@ -6,7 +6,7 @@ export interface User {
   email: string;
 }
 
-export class ServiceBClient {
+export class ProviderClient {
   private client: AxiosInstance;
   
   constructor(baseURL: string) {

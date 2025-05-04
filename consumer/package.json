@@ -1,5 +1,5 @@
 {
-    "name": "service-a",
+    "name": "consumer",
     "version": "1.0.0",
     "description": "Consumer service",
     "main": "dist/server.js",
@@ -14,7 +14,7 @@
         "express": "^4.18.2"
     },
     "devDependencies": {
-        "@pact-foundation/pact": "^12.1.0",
+        "@pact-foundation/pact": "^15.0.1",
         "@pact-foundation/pact-node": "^10.18.0",
         "@types/express": "^4.17.21",
         "@types/jest": "^29.5.14",

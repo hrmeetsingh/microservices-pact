@@ -1,15 +1,15 @@
 import { Pact } from '@pact-foundation/pact';
 import path from 'path';
-import { ServiceBClient, User } from '../src/client';
+import { ProviderClient, User } from '../src/client';
 
-describe('Service B Client', () => {
+describe('Provider Client', () => {
   const provider = new Pact({
-    consumer: 'service-a',
-    provider: 'service-b',
+    consumer: 'consumer',
+    provider: 'provider',
     log: path.resolve(process.cwd(), 'logs', 'pact.log'),
     logLevel: 'warn',
     dir: path.resolve(process.cwd(), 'pacts'),
-    spec: 2
+    spec: 4
   });
 
   var expectedUser: User = {
@@ -27,7 +27,7 @@ describe('Service B Client', () => {
     }
   ];
 
-  let client: ServiceBClient;
+  let client: ProviderClient;
 
   beforeAll(() => provider.setup());
   afterAll(() => provider.finalize());
@@ -52,7 +52,7 @@ describe('Service B Client', () => {
     });
 
     it('returns all users', async () => {
-      client = new ServiceBClient(provider.mockService.baseUrl);
+      client = new ProviderClient(provider.mockService.baseUrl);
       const users = await client.getUsers();
       expect(users).toEqual(expectedUsers);
     });
@@ -80,7 +80,7 @@ describe('Service B Client', () => {
     });
 
     it('returns the user', async () => {
-      client = new ServiceBClient(provider.mockService.baseUrl);
+      client = new ProviderClient(provider.mockService.baseUrl);
       const user = await client.getUserById(1);
       expect(user).toEqual(expectedUser);
     });

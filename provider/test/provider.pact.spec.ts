@@ -3,7 +3,7 @@ import { createApp } from '../src/app';
 import express from 'express';
 import path from 'path';
 
-describe('Service B Provider Verification', () => {
+describe('Provider Verification', () => {
   let app: express.Application;
   let server: any;
 
@@ -24,7 +24,7 @@ describe('Service B Provider Verification', () => {
 
   it('validates the expectations of Service A', async () => {
     const options = {
-      provider: 'service-b',
+      provider: 'provider',
       providerBaseUrl: 'http://localhost:3002',
       pactBrokerUrl: 'http://localhost:9292',
       consumerVersionSelectors: [

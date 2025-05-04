@@ -7,12 +7,12 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "start:service-a": "cd service-a && npm start",
-    "start:service-b": "cd service-b && npm start",
-    "test:service-a": "cd service-a && npm test",
-    "test:service-b": "cd service-b && npm test",
+    "start:consumer": "cd consumer && npm start",
+    "start:provider": "cd provider && npm start",
+    "test:consumer": "cd consumer && npm test",
+    "test:provider": "cd provider && npm test",
     "start:pact-broker": "cd pact-broker && docker-compose up",
-    "setup": "npm install && cd service-a && npm install && cd ../service-b && npm install"
+    "setup": "npm install && cd consumer && npm install && cd ../provider && npm install"
   },
   "keywords": ["microservices", "pact", "contract-testing", "typescript"]
 }
