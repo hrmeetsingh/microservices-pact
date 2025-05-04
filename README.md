@@ -13,15 +13,26 @@ The project uses TypeScript, Jest, and Pact to ensure that the contract between 
 
 ```
 microservices-pact/
+├── pact-broker/       # Pact Broker
+│   ├── docker-compose.yml
 ├── service-a/         # Consumer service
 │   ├── src/
+│   │     ├── app.ts
+│   │     ├── client.ts
+│   │     ├── server.ts
 │   ├── test/
+│   │     ├── consumer.pact.spec.ts # Consumer test
+│   ├── pacts/
+│   ├── publish-pacts.js
 │   ├── package.json
 │   ├── jest.config.ts
 │   └── tsconfig.json
 ├── service-b/         # Provider service
 │   ├── src/
+│   │     ├── app.ts
+│   │     ├── server.ts
 │   ├── test/
+│   │     ├── provider.pact.spec.ts # Provider test
 │   ├── package.json
 │   ├── jest.config.ts
 │   └── tsconfig.json
