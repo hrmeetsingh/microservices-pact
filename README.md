@@ -112,7 +112,7 @@ npm run test:service-b
    Run the consumer tests in Service A. This produces Pact JSON files describing the contract.
 
 3. **Publish Pact Files (Optional):**  
-   If using a Pact Broker, publish the generated Pact files using the provided script. This example uses a local Pact Broker running in a Docker container.
+   If using a Pact Broker, publish the generated Pact files using the provided script. This example uses a local Pact Broker running in a Docker container, make sure to have docker running before running the publish pact command.
 
 4. **Verify Provider:**  
    In Service B, run the provider verification tests. These tests will fetch the Pact files and verify that Service B’s API matches the contract.
