@@ -61,27 +61,44 @@ npm install
 cd ../service-b
 npm install
 ```
+Alternatively, you can use the `npm run setup` script to install dependencies for both services:
+
+```bash
+npm run setup
+```
 
 ### 2. Running Tests
+
+#### Pact Broker
+
+Runs the Pact Broker:
+
+```bash
+npm run start:pact-broker
+```
 
 #### Consumer (Service A)
 
 Runs the consumer tests and generates Pact files:
 
 ```bash
-cd service-a
-npm test
+npm run test:service-a
 ```
 
 Pact files will be generated in `service-a/pacts/`.
+
+#### Publish the generated Pact files to the Pact Broker:
+
+```bash
+npm run publish:pacts
+```
 
 #### Provider (Service B)
 
 Verifies the provider against the generated Pact files:
 
 ```bash
-cd service-b
-npm test
+npm run test:service-b
 ```
 
 ---
@@ -95,7 +112,7 @@ npm test
    Run the consumer tests in Service A. This produces Pact JSON files describing the contract.
 
 3. **Publish Pact Files (Optional):**  
-   If using a Pact Broker, publish the generated Pact files using the provided script.
+   If using a Pact Broker, publish the generated Pact files using the provided script. This example uses a local Pact Broker running in a Docker container.
 
 4. **Verify Provider:**  
    In Service B, run the provider verification tests. These tests will fetch the Pact files and verify that Service B’s API matches the contract.
@@ -106,9 +123,11 @@ npm test
 
 Each service defines the following npm scripts:
 
-- `npm run build` – Compile TypeScript
-- `npm start` – Build and run the service
-- `npm test` – Run Jest tests (with Pact integration)
+- `npm run test:service-a` – Run Jest tests (with Pact integration)
+- `npm run test:service-b` – Run Jest tests (with Pact integration)
+- `npm run publish:pacts` – Publish the generated Pact files to the Pact Broker
+- `npm run start:pact-broker` – Start the Pact Broker
+- `npm run setup` – Install dependencies for both services
 
 ---
 
